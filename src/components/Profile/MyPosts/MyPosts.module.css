@@ -1,0 +1,8 @@
+.postsBlock{
+    padding: 15px;
+}
+.newPost{
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}

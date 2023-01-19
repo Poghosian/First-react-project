@@ -21,11 +21,12 @@
 }
 
 .message {
-
+    display: flex;
 }
 
 .messageImg {
-
+    margin-right: 10px;
+    width: 100px;
 }
 
 .messageText {
