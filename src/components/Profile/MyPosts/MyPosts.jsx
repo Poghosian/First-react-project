@@ -4,19 +4,23 @@ import Post from './Posts/Post'
 
 
 const MyPosts = (props) => {
-    debugger
     let postsElements =
         props.posts.map(p => <Post id={p.id} message={p.message} key={p.id} likesCount={p.likesCount} />)
 
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        props.addPost()
+        props.dispatch({
+            type: 'ADD-POST'
+        })
     }
 
     let onPostChange = () => {
-        let newPost = newPostElement.current.value;
-        props.changeNewPostText(newPost)
+        let newText = newPostElement.current.value;
+        props.dispatch({
+            type: 'CHANGE-NEW-POST-TEXT',
+            newText: newText
+        })
     }
 
     return (
