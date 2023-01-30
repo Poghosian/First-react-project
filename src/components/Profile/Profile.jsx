@@ -5,7 +5,6 @@ import ProfileInfo from "./ProfileInfo/ProfileInfo";
 import {changeNewPostText} from "../../redux/state";
 
 const Profile = (props) => {
-
     return (
         <div>
             <ProfileInfo />
