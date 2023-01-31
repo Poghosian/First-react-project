@@ -1,3 +1,5 @@
+const ADD_POST = 'ADD-POST'
+const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT'
 let store = {
     _state: {
         profilePage: {
@@ -32,7 +34,7 @@ let store = {
         this._callSubscriber = obServer;
     },
     dispatch(action) {
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
 
             let newPost = {
                 id: 5,
@@ -43,15 +45,22 @@ let store = {
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this._state)
 
-        } else if (action.type === 'CHANGE-NEW-POST-TEXT') {
+        } else if (action.type === CHANGE_NEW_POST_TEXT) {
 
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(this._state)
 
         }
     }
-
 }
+export const addPostActionCreator = () => ({type: ADD_POST})
+
+
+
+export const changeNewPostTextActionCreator = (newText) =>({
+        type: CHANGE_NEW_POST_TEXT,
+        newText: newText
+})
 
 // window.store = store
 
