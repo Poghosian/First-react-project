@@ -19,7 +19,14 @@ let dialogsReducer = (state, action) => {
     }
 
 
-
 }
+export const addMessageActionCreator = () => ({type: SEND_MESSAGE})
+
+export const changeNewMessageTextActionCreator = (newTextMessage) =>({
+    type: CHANGE_NEW_MESSAGE_TEXT,
+    newTextMessage: newTextMessage
+})
+
+
 
 export default dialogsReducer
