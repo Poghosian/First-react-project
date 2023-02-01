@@ -1,8 +1,11 @@
+import dialogsReducer from "./dialogs-reducer";
+import profileReducer from "./profile-reducer";
+
 const ADD_POST = 'ADD-POST'
 const CHANGE_NEW_POST_TEXT = 'CHANGE-NEW-POST-TEXT'
 const SEND_MESSAGE = 'ADD-MESSAGE'
 const CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT'
-let id = 6;
+
 let store = {
     _state: {
         profilePage: {
@@ -38,35 +41,10 @@ let store = {
         this._callSubscriber = obServer;
     },
     dispatch(action) {
-        if (action.type === ADD_POST) {
 
-            let newPost = {
-                id: 5,
-                message: this._state.profilePage.newPostText,
-                likesCount: 0
-            };
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = ''
-            this._callSubscriber(this._state)
-
-        } else if (action.type === CHANGE_NEW_POST_TEXT) {
-
-            this._state.profilePage.newPostText = action.newText
-            this._callSubscriber(this._state)
-
-        } else if (action.type === SEND_MESSAGE){
-            let newMessage = {
-                id: id,
-                message: this._state.dialogsPage.newMessageText
-            }
-            this._state.dialogsPage.messages.push(newMessage)
-            id ++;
-            this._state.dialogsPage.newMessageText = ''
-            this._callSubscriber(this._state)
-        } else if(action.type === CHANGE_NEW_MESSAGE_TEXT){
-            this._state.dialogsPage.newMessageText = action.newTextMessage
-            this._callSubscriber(this._state)
-        }
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._callSubscriber(this._state)
     }
 }
 export const addPostActionCreator = () => ({type: ADD_POST})
@@ -82,14 +60,6 @@ export const changeNewMessageTextActionCreator = (newTextMessage) =>({
     type: CHANGE_NEW_MESSAGE_TEXT,
     newTextMessage: newTextMessage
 })
-
-// window.store = store
-
-
-
-
-
-
 
 
 export default store
