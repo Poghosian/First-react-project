@@ -10,9 +10,7 @@ const MyPosts = (props) => {
     let newPostElement = React.createRef();
 
     let addPost = () => {
-        let action = {
-            type: 'ADD-POST'
-        };
+        let action = addPostActionCreator();
         props.dispatch(addPostActionCreator(action))
     }
 
