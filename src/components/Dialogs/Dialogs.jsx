@@ -5,14 +5,14 @@ import Message from "./Message/Message";
 import {addMessageActionCreator, changeNewMessageTextActionCreator} from "../../redux/dialogs-reducer";
 
 const Dialogs = (props) => {
-    const messageElements = React.createRef()
+    let state = props.store.getState().dialogsPage
 
     let dialogsElements =
-        props.dialogPageInfo.dialogs.map(d =>
+        state.dialogs.map(d =>
             <DialogItem id={d.id} name={d.name} key={d.id} /> )
 
     let dialogMessages =
-        props.dialogPageInfo.messages.map(m =>
+        state.messages.map(m =>
             (<Message id={m.id} message={m.message} key={m.id} />))
 
     let onChangeMessage = (e) => {
@@ -23,12 +23,12 @@ const Dialogs = (props) => {
         // function getRandomInt(max) {
         //     return Math.floor(Math.random() * max);
         // }
-        props.dispatch(action)
+        props.store.dispatch(action)
     }
 
     let addMessage = () => {
         let action = addMessageActionCreator();
-        props.dispatch(action)
+        props.store.dispatch(action)
     }
 
 
@@ -45,7 +45,7 @@ const Dialogs = (props) => {
             <div>
                 <textarea placeholder='Enter your message'
                           onChange={onChangeMessage}
-                          value={props.dialogPageInfo.newMessageText}/>
+                          value={state.newMessageText}/>
                 <button onClick={addMessage}>Send</button>
             </div>
         </div>
