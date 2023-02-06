@@ -5,6 +5,7 @@ let initialState = {
     posts: [
         { id: 1, message: 'Hi, How are yor?', likesCount: 12 },
         { id: 2, message: 'Its my firty post', likesCount: 1 },
+        { id: 3, message: 'Its my firty post', likesCount: 1 },
     ],
     newPostText: 'it-project'
 }
@@ -21,6 +22,8 @@ function profileReducer (state = initialState, action){
             state.newPostText = ''
             return state
         case CHANGE_NEW_POST_TEXT:
+            console.log(action.newText)
+            debugger
             state.newPostText = action.newText
             return state;
         default:
