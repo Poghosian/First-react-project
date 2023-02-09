@@ -1,13 +1,15 @@
 import React from "react"
 import s from './Dialogs.module.css'
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
 
 const Dialogs = (props) => {
 
-    let dialogsElements = props.dialogsElements
+    let dialogsElements = props.dialogsPage.dialogs.map(p => <DialogItem id={p.id} name={p.name} key={p.id}/>)
 
-    let dialogMessages = props.dialogMessages
+    let dialogMessages = props.dialogsPage.messages.map(m => <Message id={m.id} message={m.message} key={m.id}/>)
 
-    let newMessageText = props.newMessageText
+    let newMessageText = props.dialogsPage.newMessageText
 
     let onChangeMessage = (e) => {
         let newTextMessage = e.target.value;

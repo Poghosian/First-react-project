@@ -23,7 +23,6 @@ function profileReducer (state = initialState, action){
             return state
         case CHANGE_NEW_POST_TEXT:
             console.log(action.newText)
-            debugger
             state.newPostText = action.newText
             return state;
         default:
