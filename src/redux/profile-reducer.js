@@ -18,13 +18,18 @@ function profileReducer (state = initialState, action){
                 message: state.newPostText,
                 likesCount: 0
             };
-            state.posts.push(newPost);
-            state.newPostText = ''
-            return state
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
+            }
+
         case CHANGE_NEW_POST_TEXT:
-            console.log(action.newText)
-            state.newPostText = action.newText
-            return state;
+            return {
+                ...state,
+                newPostText: action.newText
+            }
+
         default:
             return state;
     }

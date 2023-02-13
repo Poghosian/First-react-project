@@ -13,7 +13,7 @@ let mapDispatchToProps = (dispatch) => {
     return {
         changeNewMessageText: (newTextMessage) =>{
             let action = changeNewMessageTextActionCreator(newTextMessage)
-            dispatch.changeNewMessageText(action)
+            dispatch(action)
         },
         addMessage: () => {
             let action = addMessageActionCreator()
