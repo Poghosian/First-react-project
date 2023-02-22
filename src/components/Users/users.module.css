@@ -1,0 +1,21 @@
+.d_flex{
+    display: flex;
+    align-items: center;
+}
+.img_block img{
+    max-width: 100%;
+}
+.img_block{
+    width: 50px;
+}
+.currentPage{
+    font-weight: bold;
+
+}
+.pagination{
+    padding: 5px 5px  ;
+}
+.paginateBlock{
+    width: fit-content;
+    margin: 30px auto;
+}
